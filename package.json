@@ -3,7 +3,16 @@
   "version": "0.0.1",
   "author": "Coinxu",
   "main": "./dist",
+  "scripts": {
+    "build": "rm -rf ./dist && ./node_modules/.bin/tsc",
+    "test": "npm run build && ./node_modules/.bin/mocha ./dist/__test__"
+  },
+  "dependencies": {
+    "@types/node": "8.0.19",
+    "@types/mocha": "2.2.41"
+  },
   "devDependencies": {
-    "typescript": "^2.4.2"
+    "typescript": "^2.4.2",
+    "mocha": "*"
   }
 }

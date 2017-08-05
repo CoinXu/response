@@ -16,7 +16,7 @@ interface StatuStruct {
  * @return {{code: number, body: string}}
  */
 function struct (code: number, body: string): StatuStruct {
-  return {code, body}
+  return { code, body }
 }
 
 const HTTP_RESPONSE_STATUS = {

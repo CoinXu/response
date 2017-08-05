@@ -4,10 +4,12 @@
     "target": "es2015",
     "noImplicitAny": true,
     "sourceMap": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "mapRoot": "source-map"
   },
   "include": [
-    "./src/**/*"
+    "./src/**/*",
+    "./__test__/**/*"
   ],
   "exclude": [
     "node_modules"
