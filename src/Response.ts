@@ -12,14 +12,14 @@ export interface ResponseStruct<T> {
 }
 
 export class Response<T> {
-  private _code: number
-  private _type: string
-  private _body: T
+  private code: number
+  private body: T
+  private type: string
 
   constructor (code: number, body: T, type: string) {
-    this._code = code
-    this._body = body
-    this._type = type
+    this.code = code
+    this.body = body
+    this.type = type
   }
 
   serialize (): ResponseStruct<T> {
@@ -30,33 +30,23 @@ export class Response<T> {
     }
   }
 
-  // ========= getter and setter =========
-  set code (code: number) {
-    this._code = code
-  }
-
-  get code (): number {
-    return this._code
-  }
-
-  set type (type: string) {
-    this._type = type
-  }
-
-  get type (): string {
-    return this._type
-  }
-
-  set body (body: T) {
-    this._body = body
-  }
-
-  get body (): T {
-    return this._body
-  }
-
   static struct (struct: StatusStruct): ResponseStruct<string> {
     return new Response(struct.code, struct.body, MEDIA_TYPES.TEXT_PLAIN).serialize()
+  }
+
+  /**
+   * 发送状态码
+   * @param {Number} code
+   * @param {String} body
+   * @param {String} type
+   * @return {ResponseStruct<string>}
+   * @example
+   * ```js
+   * Response.status(200, 'ok')
+   * ```
+   */
+  static status (code: number, body: string, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<string> {
+    return new Response(code, body, type).serialize()
   }
 
   // ========= static =========

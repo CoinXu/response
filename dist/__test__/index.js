@@ -46,6 +46,8 @@ describe('Response', function () {
     });
     // stati cmethods
     const responseArr = [
+        ['Response.struct', src_1.Response.struct(src_1.HTTP_RESPONSE_STATUS.HTTPVersionNotSupported)],
+        ['Response.status', src_1.Response.status(404, '<h3>404 Not Fount</h3>', src_1.MEDIA_TYPES.TEXT_HTML)],
         // 2xx
         ['Response.noContent', src_1.Response.noContent()],
         // 3xx

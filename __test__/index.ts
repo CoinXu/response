@@ -73,6 +73,8 @@ describe('Response', function () {
 
   // stati cmethods
   const responseArr: Array<[string, ResponseStruct<string>]> = [
+    ['Response.struct', Response.struct(HTTP_RESPONSE_STATUS.HTTPVersionNotSupported)],
+    ['Response.status', Response.status(404, '<h3>404 Not Fount</h3>', MEDIA_TYPES.TEXT_HTML)],
     // 2xx
     ['Response.noContent', Response.noContent()],
 

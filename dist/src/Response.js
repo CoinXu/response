@@ -7,9 +7,9 @@ const http_response_status_1 = require("./http-response-status");
 const media_types_1 = require("./media-types");
 class Response {
     constructor(code, body, type) {
-        this._code = code;
-        this._body = body;
-        this._type = type;
+        this.code = code;
+        this.body = body;
+        this.type = type;
     }
     serialize() {
         return {
@@ -18,27 +18,22 @@ class Response {
             body: this.body
         };
     }
-    // ========= getter and setter =========
-    set code(code) {
-        this._code = code;
-    }
-    get code() {
-        return this._code;
-    }
-    set type(type) {
-        this._type = type;
-    }
-    get type() {
-        return this._type;
-    }
-    set body(body) {
-        this._body = body;
-    }
-    get body() {
-        return this._body;
-    }
     static struct(struct) {
         return new Response(struct.code, struct.body, media_types_1.MEDIA_TYPES.TEXT_PLAIN).serialize();
+    }
+    /**
+     * 发送状态码
+     * @param {Number} code
+     * @param {String} body
+     * @param {String} type
+     * @return {ResponseStruct<string>}
+     * @example
+     * ```js
+     * Response.status(200, 'ok')
+     * ```
+     */
+    static status(code, body, type = media_types_1.MEDIA_TYPES.TEXT_PLAIN) {
+        return new Response(code, body, type).serialize();
     }
     // ========= static =========
     // ========= 2xx =========

@@ -8,15 +8,24 @@ export interface ResponseStruct<T> {
     body: T;
 }
 export declare class Response<T> {
-    private _code;
-    private _type;
-    private _body;
+    private code;
+    private body;
+    private type;
     constructor(code: number, body: T, type: string);
     serialize(): ResponseStruct<T>;
-    code: number;
-    type: string;
-    body: T;
     static struct(struct: StatusStruct): ResponseStruct<string>;
+    /**
+     * 发送状态码
+     * @param {Number} code
+     * @param {String} body
+     * @param {String} type
+     * @return {ResponseStruct<string>}
+     * @example
+     * ```js
+     * Response.status(200, 'ok')
+     * ```
+     */
+    static status(code: number, body: string, type?: string): ResponseStruct<string>;
     /**
      * @param body
      * @param type
