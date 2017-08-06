@@ -3,7 +3,7 @@
  * Created by asd on 17-8-5.
  * https://www.iana.org/assignments/media-types/media-types.xhtml
  */
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 exports.MEDIA_TYPES = {
     // Application
     APPLICATION_OCTET_STREAM: 'application/octet-stream',

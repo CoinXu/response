@@ -2,25 +2,25 @@
 /**
  * Created by asd on 17-8-5.
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-const http_response_status_1 = require("./http-response-status");
-const media_types_1 = require("./media-types");
-class Response {
-    constructor(code, body, type) {
+exports.__esModule = true;
+var http_response_status_1 = require("./http-response-status");
+var media_types_1 = require("./media-types");
+var Response = (function () {
+    function Response(code, body, type) {
         this.code = code;
         this.body = body;
         this.type = type;
     }
-    serialize() {
+    Response.prototype.serialize = function () {
         return {
             code: this.code,
             type: this.type,
             body: this.body
         };
-    }
-    static struct(struct) {
+    };
+    Response.struct = function (struct) {
         return new Response(struct.code, struct.body, media_types_1.MEDIA_TYPES.TEXT_PLAIN).serialize();
-    }
+    };
     /**
      * 发送状态码
      * @param {Number} code
@@ -32,9 +32,10 @@ class Response {
      * Response.status(200, 'ok')
      * ```
      */
-    static status(code, body, type = media_types_1.MEDIA_TYPES.TEXT_PLAIN) {
+    Response.status = function (code, body, type) {
+        if (type === void 0) { type = media_types_1.MEDIA_TYPES.TEXT_PLAIN; }
         return new Response(code, body, type).serialize();
-    }
+    };
     // ========= static =========
     // ========= 2xx =========
     /**
@@ -47,83 +48,85 @@ class Response {
      * Response.ok('{"id":"a"}', MEDIA_TYPES.APPLICATION_JSON)
      * ```
      */
-    static ok(body, type = media_types_1.MEDIA_TYPES.TEXT_PLAIN) {
+    Response.ok = function (body, type) {
+        if (type === void 0) { type = media_types_1.MEDIA_TYPES.TEXT_PLAIN; }
         return new Response(http_response_status_1.HTTP_RESPONSE_STATUS.Ok.code, body, type).serialize();
-    }
-    static noContent() {
+    };
+    Response.noContent = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.NoContent);
-    }
+    };
     // ========= 3xx =========
-    static seeOther() {
+    Response.seeOther = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.SeeOther);
-    }
-    static notModified() {
+    };
+    Response.notModified = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.NotModified);
-    }
-    static unused() {
+    };
+    Response.unused = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.Unused);
-    }
+    };
     // ========= 4xx =========
-    static badRequest() {
+    Response.badRequest = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.BadRequest);
-    }
-    static unauthorized() {
+    };
+    Response.unauthorized = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.BadRequest);
-    }
-    static forbidden() {
+    };
+    Response.forbidden = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.BadRequest);
-    }
-    static notFount() {
+    };
+    Response.notFount = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.NotFount);
-    }
-    static methodNotAllowed() {
+    };
+    Response.methodNotAllowed = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.MethodNotAllowed);
-    }
-    static notAcceptable() {
+    };
+    Response.notAcceptable = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.NotAcceptable);
-    }
-    static requestTimeout() {
+    };
+    Response.requestTimeout = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.RequestTimeout);
-    }
-    static conflict() {
+    };
+    Response.conflict = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.Conflict);
-    }
-    static gone() {
+    };
+    Response.gone = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.Gone);
-    }
-    static lengthRequired() {
+    };
+    Response.lengthRequired = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.LengthRequired);
-    }
-    static requestEntityTooLarge() {
+    };
+    Response.requestEntityTooLarge = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.RequestEntityTooLarge);
-    }
-    static requestURITooLong() {
+    };
+    Response.requestURITooLong = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.RequestURITooLong);
-    }
-    static unsupportedMediaType() {
+    };
+    Response.unsupportedMediaType = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.UnsupportedMediaType);
-    }
-    static expectationFailed() {
+    };
+    Response.expectationFailed = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.ExpectationFailed);
-    }
+    };
     // ========= 5xx =========
-    static internalServerError() {
+    Response.internalServerError = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.InternalServerError);
-    }
-    static notImplemented() {
+    };
+    Response.notImplemented = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.NotImplemented);
-    }
-    static badGateway() {
+    };
+    Response.badGateway = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.BadGateway);
-    }
-    static serviceUnavailable() {
+    };
+    Response.serviceUnavailable = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.ServiceUnavailable);
-    }
-    static gatewayTimeout() {
+    };
+    Response.gatewayTimeout = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.GatewayTimeout);
-    }
-    static httpVersionNotSupported() {
+    };
+    Response.httpVersionNotSupported = function () {
         return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.HTTPVersionNotSupported);
-    }
-}
+    };
+    return Response;
+}());
 exports.Response = Response;

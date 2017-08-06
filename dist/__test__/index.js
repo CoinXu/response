@@ -4,24 +4,24 @@
  * @date   05/08/2017
  * @description
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-const src_1 = require("../src");
-const assert_1 = require("assert");
+exports.__esModule = true;
+var src_1 = require("../src");
+var assert_1 = require("assert");
 require("mocha");
 function isType(type) {
     return function (v) {
-        return Object.prototype.toString.call(v) === `[object ${type}]`;
+        return Object.prototype.toString.call(v) === "[object " + type + "]";
     };
 }
-const isString = isType('String');
-const isNumber = isType('Number');
-const isObject = isType('Object');
-let body;
-let code;
-let type;
+var isString = isType('String');
+var isNumber = isType('Number');
+var isObject = isType('Object');
+var body;
+var code;
+var type;
 // instance
-const res = new src_1.Response(src_1.HTTP_RESPONSE_STATUS.Ok.code, src_1.HTTP_RESPONSE_STATUS.Ok.body, src_1.MEDIA_TYPES.TEXT_PLAIN);
-const struct = res.serialize();
+var res = new src_1.Response(src_1.HTTP_RESPONSE_STATUS.Ok.code, src_1.HTTP_RESPONSE_STATUS.Ok.body, src_1.MEDIA_TYPES.TEXT_PLAIN);
+var struct = res.serialize();
 describe('Response', function () {
     it('new Response', function () {
         body = struct.body;
@@ -32,20 +32,20 @@ describe('Response', function () {
         assert_1.ok(isString(type));
     });
     it('Use Interface structure', function () {
-        const sres = new src_1.Response(src_1.HTTP_RESPONSE_STATUS.Ok.code, { id: 'id', name: 'name', age: 1 }, src_1.MEDIA_TYPES.APPLICATION_JSON).serialize();
-        let sbody = sres.body;
+        var sres = new src_1.Response(src_1.HTTP_RESPONSE_STATUS.Ok.code, { id: 'id', name: 'name', age: 1 }, src_1.MEDIA_TYPES.APPLICATION_JSON).serialize();
+        var sbody = sres.body;
         code = sres.code;
         type = sres.type;
         assert_1.ok(isObject(sbody));
         assert_1.ok(isNumber(code));
         assert_1.ok(isString(type));
-        const res01 = src_1.Response.ok({ id: 'id', name: 'name', age: 1 });
+        var res01 = src_1.Response.ok({ id: 'id', name: 'name', age: 1 });
         assert_1.ok(isObject(res01.body));
         assert_1.ok(isNumber(res01.code));
         assert_1.ok(isString(res01.type));
     });
     // stati cmethods
-    const responseArr = [
+    var responseArr = [
         ['Response.struct', src_1.Response.struct(src_1.HTTP_RESPONSE_STATUS.HTTPVersionNotSupported)],
         ['Response.status', src_1.Response.status(404, '<h3>404 Not Fount</h3>', src_1.MEDIA_TYPES.TEXT_HTML)],
         // 2xx
@@ -77,12 +77,16 @@ describe('Response', function () {
         ['Response.gatewayTimeout', src_1.Response.gatewayTimeout()],
         ['Response.httpVersionNotSupported', src_1.Response.httpVersionNotSupported()],
     ];
-    for (let r of responseArr) {
-        const [name, struc] = r;
-        it(name, function () {
+    var _loop_1 = function (r) {
+        var name_1 = r[0], struc = r[1];
+        it(name_1, function () {
             assert_1.ok(isString(struc.body));
             assert_1.ok(isNumber(struc.code));
             assert_1.ok(isString(struc.type));
         });
+    };
+    for (var _i = 0, responseArr_1 = responseArr; _i < responseArr_1.length; _i++) {
+        var r = responseArr_1[_i];
+        _loop_1(r);
     }
 });

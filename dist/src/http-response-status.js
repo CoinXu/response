@@ -4,7 +4,7 @@
  * HTTP response status
  * https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
  */
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 /**
  * 创建status快捷函数
  * @param code
@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @return {{code: number, body: string}}
  */
 function struct(code, body) {
-    return { code, body };
+    return { code: code, body: body };
 }
 exports.HTTP_RESPONSE_STATUS = {
     // ## Successful 2xx
