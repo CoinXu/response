@@ -14,7 +14,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 function struct(code, body) {
     return { code, body };
 }
-const HTTP_RESPONSE_STATUS = {
+exports.HTTP_RESPONSE_STATUS = {
     // ## Successful 2xx
     Ok: struct(200, 'ok'),
     NoContent: struct(204, 'No Content'),
@@ -46,5 +46,3 @@ const HTTP_RESPONSE_STATUS = {
     GatewayTimeout: struct(504, 'Gateway Timeout'),
     HTTPVersionNotSupported: struct(505, 'HTTP Version Not Supported')
 };
-exports.HTTP_RESPONSE_STATUS = HTTP_RESPONSE_STATUS;
-//# sourceMappingURL=/Users/coinxu/github/response/source-map/src/http-response-status.js.map

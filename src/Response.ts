@@ -2,16 +2,16 @@
  * Created by asd on 17-8-5.
  */
 
-import { HTTP_RESPONSE_STATUS, StatuStruct } from './http-response-status'
+import { HTTP_RESPONSE_STATUS, StatusStruct } from './http-response-status'
 import { MEDIA_TYPES } from './media-types'
 
-interface ResponseStruct<T> {
+export interface ResponseStruct<T> {
   code: number
   type: string
   body: T
 }
 
-class Response<T> {
+export class Response<T> {
   private _code: number
   private _type: string
   private _body: T
@@ -55,7 +55,7 @@ class Response<T> {
     return this._body
   }
 
-  static struct (struct: StatuStruct): ResponseStruct<string> {
+  static struct (struct: StatusStruct): ResponseStruct<string> {
     return new Response(struct.code, struct.body, MEDIA_TYPES.TEXT_PLAIN).serialize()
   }
 
@@ -176,7 +176,3 @@ class Response<T> {
   }
 }
 
-export {
-  Response,
-  ResponseStruct
-}

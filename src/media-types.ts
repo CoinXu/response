@@ -3,7 +3,7 @@
  * https://www.iana.org/assignments/media-types/media-types.xhtml
  */
 
-const MEDIA_TYPES = {
+export const MEDIA_TYPES = {
 
   // Application
   APPLICATION_OCTET_STREAM: 'application/octet-stream',
@@ -33,6 +33,3 @@ const MEDIA_TYPES = {
   TEXT_XML: 'text/xml'
 }
 
-export {
-  MEDIA_TYPES
-}

@@ -132,4 +132,3 @@ class Response {
     }
 }
 exports.Response = Response;
-//# sourceMappingURL=/Users/coinxu/github/response/source-map/src/Response.js.map

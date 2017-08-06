@@ -103,6 +103,7 @@ describe('Response', function () {
     ['Response.badGateway', Response.badGateway()],
     ['Response.serviceUnavailable', Response.serviceUnavailable()],
     ['Response.gatewayTimeout', Response.gatewayTimeout()],
+    ['Response.httpVersionNotSupported', Response.httpVersionNotSupported()],
 
   ]
 

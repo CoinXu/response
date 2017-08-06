@@ -4,7 +4,7 @@
  * https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
  */
 
-interface StatuStruct {
+export interface StatusStruct {
   code: number
   body: string
 }
@@ -15,11 +15,11 @@ interface StatuStruct {
  * @param body
  * @return {{code: number, body: string}}
  */
-function struct (code: number, body: string): StatuStruct {
+function struct (code: number, body: string): StatusStruct {
   return { code, body }
 }
 
-const HTTP_RESPONSE_STATUS = {
+export const HTTP_RESPONSE_STATUS = {
   // ## Successful 2xx
   Ok: struct(200, 'ok'),
   NoContent: struct(204, 'No Content'),
@@ -54,9 +54,3 @@ const HTTP_RESPONSE_STATUS = {
   GatewayTimeout: struct(504, 'Gateway Timeout'),
   HTTPVersionNotSupported: struct(505, 'HTTP Version Not Supported')
 }
-
-export {
-  HTTP_RESPONSE_STATUS,
-  StatuStruct
-}
-

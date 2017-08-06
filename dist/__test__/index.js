@@ -73,6 +73,7 @@ describe('Response', function () {
         ['Response.badGateway', src_1.Response.badGateway()],
         ['Response.serviceUnavailable', src_1.Response.serviceUnavailable()],
         ['Response.gatewayTimeout', src_1.Response.gatewayTimeout()],
+        ['Response.httpVersionNotSupported', src_1.Response.httpVersionNotSupported()],
     ];
     for (let r of responseArr) {
         const [name, struc] = r;
@@ -83,4 +84,3 @@ describe('Response', function () {
         });
     }
 });
-//# sourceMappingURL=/Users/coinxu/github/response/source-map/__test__/index.js.map

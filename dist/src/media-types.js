@@ -4,7 +4,7 @@
  * https://www.iana.org/assignments/media-types/media-types.xhtml
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-const MEDIA_TYPES = {
+exports.MEDIA_TYPES = {
     // Application
     APPLICATION_OCTET_STREAM: 'application/octet-stream',
     APPLICATION_XML: 'application/xml',
@@ -29,5 +29,3 @@ const MEDIA_TYPES = {
     TEXT_CSV: 'text/csv',
     TEXT_XML: 'text/xml'
 };
-exports.MEDIA_TYPES = MEDIA_TYPES;
-//# sourceMappingURL=/Users/coinxu/github/response/source-map/src/media-types.js.map
