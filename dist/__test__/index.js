@@ -20,7 +20,7 @@ var body;
 var code;
 var type;
 // instance
-var res = new src_1.Response(src_1.HTTP_RESPONSE_STATUS.Ok.code, src_1.HTTP_RESPONSE_STATUS.Ok.body, src_1.MEDIA_TYPES.TEXT_PLAIN);
+var res = new src_1.Response(src_1.HTTP_RESPONSE_STATUS.OK.code, src_1.HTTP_RESPONSE_STATUS.OK.body, src_1.MEDIA_TYPES.TEXT_PLAIN);
 var struct = res.serialize();
 describe('Response', function () {
     it('new Response', function () {
@@ -32,7 +32,7 @@ describe('Response', function () {
         assert_1.ok(isString(type));
     });
     it('Use Interface structure', function () {
-        var sres = new src_1.Response(src_1.HTTP_RESPONSE_STATUS.Ok.code, { id: 'id', name: 'name', age: 1 }, src_1.MEDIA_TYPES.APPLICATION_JSON).serialize();
+        var sres = new src_1.Response(src_1.HTTP_RESPONSE_STATUS.OK.code, { id: 'id', name: 'name', age: 1 }, src_1.MEDIA_TYPES.APPLICATION_JSON).serialize();
         var sbody = sres.body;
         code = sres.code;
         type = sres.type;
@@ -46,7 +46,7 @@ describe('Response', function () {
     });
     // stati cmethods
     var responseArr = [
-        ['Response.struct', src_1.Response.struct(src_1.HTTP_RESPONSE_STATUS.HTTPVersionNotSupported)],
+        ['Response.struct', src_1.Response.struct(src_1.HTTP_RESPONSE_STATUS.HTTP_VERSION_NOT_SUPPORTED)],
         ['Response.status', src_1.Response.status(404, '<h3>404 Not Fount</h3>', src_1.MEDIA_TYPES.TEXT_HTML)],
         // 2xx
         ['Response.noContent', src_1.Response.noContent()],
@@ -76,6 +76,7 @@ describe('Response', function () {
         ['Response.serviceUnavailable', src_1.Response.serviceUnavailable()],
         ['Response.gatewayTimeout', src_1.Response.gatewayTimeout()],
         ['Response.httpVersionNotSupported', src_1.Response.httpVersionNotSupported()],
+        ['Response.badRequest with body param', src_1.Response.badRequest('need id param')]
     ];
     var _loop_1 = function (r) {
         var name_1 = r[0], struc = r[1];

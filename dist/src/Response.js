@@ -18,8 +18,8 @@ var Response = (function () {
             body: this.body
         };
     };
-    Response.struct = function (struct) {
-        return new Response(struct.code, struct.body, media_types_1.MEDIA_TYPES.TEXT_PLAIN).serialize();
+    Response.struct = function (struct, body) {
+        return new Response(struct.code, body || struct.body, media_types_1.MEDIA_TYPES.TEXT_PLAIN).serialize();
     };
     /**
      * 发送状态码
@@ -50,82 +50,82 @@ var Response = (function () {
      */
     Response.ok = function (body, type) {
         if (type === void 0) { type = media_types_1.MEDIA_TYPES.TEXT_PLAIN; }
-        return new Response(http_response_status_1.HTTP_RESPONSE_STATUS.Ok.code, body, type).serialize();
+        return new Response(http_response_status_1.HTTP_RESPONSE_STATUS.OK.code, body, type).serialize();
     };
-    Response.noContent = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.NoContent);
+    Response.noContent = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.NO_CONTENT, body);
     };
     // ========= 3xx =========
-    Response.seeOther = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.SeeOther);
+    Response.seeOther = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.SEE_OTHER, body);
     };
-    Response.notModified = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.NotModified);
+    Response.notModified = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.NOT_MODIFIED, body);
     };
-    Response.unused = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.Unused);
+    Response.unused = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.UNUSED, body);
     };
     // ========= 4xx =========
-    Response.badRequest = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.BadRequest);
+    Response.badRequest = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.BAD_REQUEST, body);
     };
-    Response.unauthorized = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.BadRequest);
+    Response.unauthorized = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.UNAUTHORIZED, body);
     };
-    Response.forbidden = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.BadRequest);
+    Response.forbidden = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.FORBIDDEN, body);
     };
-    Response.notFount = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.NotFount);
+    Response.notFount = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.NOT_FOUNT, body);
     };
-    Response.methodNotAllowed = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.MethodNotAllowed);
+    Response.methodNotAllowed = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.METHOD_NOT_ALLOWED, body);
     };
-    Response.notAcceptable = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.NotAcceptable);
+    Response.notAcceptable = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.NOT_ACCEPTABLE, body);
     };
-    Response.requestTimeout = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.RequestTimeout);
+    Response.requestTimeout = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.REQUEST_TIMEOUT, body);
     };
-    Response.conflict = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.Conflict);
+    Response.conflict = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.CONFLICT, body);
     };
-    Response.gone = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.Gone);
+    Response.gone = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.GONE, body);
     };
-    Response.lengthRequired = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.LengthRequired);
+    Response.lengthRequired = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.LENGTH_REQUIRED, body);
     };
-    Response.requestEntityTooLarge = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.RequestEntityTooLarge);
+    Response.requestEntityTooLarge = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.REQUEST_ENTITY_TOO_LARGE, body);
     };
-    Response.requestURITooLong = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.RequestURITooLong);
+    Response.requestURITooLong = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.REQUEST_URI_TOO_LONG, body);
     };
-    Response.unsupportedMediaType = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.UnsupportedMediaType);
+    Response.unsupportedMediaType = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.UNSUPPORTED_MEDIA_TYPE, body);
     };
-    Response.expectationFailed = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.ExpectationFailed);
+    Response.expectationFailed = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.EXPECTATION_FAILED, body);
     };
     // ========= 5xx =========
-    Response.internalServerError = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.InternalServerError);
+    Response.internalServerError = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.INTERNAL_SERVERERROR, body);
     };
-    Response.notImplemented = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.NotImplemented);
+    Response.notImplemented = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.NOT_IMPLEMENTED, body);
     };
-    Response.badGateway = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.BadGateway);
+    Response.badGateway = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.BAD_GATEWAY, body);
     };
-    Response.serviceUnavailable = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.ServiceUnavailable);
+    Response.serviceUnavailable = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.SERVICE_UNAVAILABLE, body);
     };
-    Response.gatewayTimeout = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.GatewayTimeout);
+    Response.gatewayTimeout = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.GATEWAY_TIMEOUT, body);
     };
-    Response.httpVersionNotSupported = function () {
-        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.HTTPVersionNotSupported);
+    Response.httpVersionNotSupported = function (body) {
+        return Response.struct(http_response_status_1.HTTP_RESPONSE_STATUS.HTTP_VERSION_NOT_SUPPORTED, body);
     };
     return Response;
 }());

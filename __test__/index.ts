@@ -24,8 +24,8 @@ let type: string
 
 // instance
 const res = new Response<string>(
-  HTTP_RESPONSE_STATUS.Ok.code,
-  HTTP_RESPONSE_STATUS.Ok.body,
+  HTTP_RESPONSE_STATUS.OK.code,
+  HTTP_RESPONSE_STATUS.OK.body,
   MEDIA_TYPES.TEXT_PLAIN
 )
 
@@ -52,7 +52,7 @@ describe('Response', function () {
     }
 
     const sres = new Response<S>(
-      HTTP_RESPONSE_STATUS.Ok.code,
+      HTTP_RESPONSE_STATUS.OK.code,
       { id: 'id', name: 'name', age: 1 },
       MEDIA_TYPES.APPLICATION_JSON
     ).serialize()
@@ -73,7 +73,7 @@ describe('Response', function () {
 
   // stati cmethods
   const responseArr: Array<[string, ResponseStruct<string>]> = [
-    ['Response.struct', Response.struct(HTTP_RESPONSE_STATUS.HTTPVersionNotSupported)],
+    ['Response.struct', Response.struct(HTTP_RESPONSE_STATUS.HTTP_VERSION_NOT_SUPPORTED)],
     ['Response.status', Response.status(404, '<h3>404 Not Fount</h3>', MEDIA_TYPES.TEXT_HTML)],
     // 2xx
     ['Response.noContent', Response.noContent()],
@@ -107,6 +107,7 @@ describe('Response', function () {
     ['Response.gatewayTimeout', Response.gatewayTimeout()],
     ['Response.httpVersionNotSupported', Response.httpVersionNotSupported()],
 
+    ['Response.badRequest with body param', Response.badRequest('need id param')]
   ]
 
   for (let r of responseArr) {

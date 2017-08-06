@@ -13,7 +13,7 @@ export declare class Response<T> {
     private type;
     constructor(code: number, body: T, type: string);
     serialize(): ResponseStruct<T>;
-    static struct(struct: StatusStruct): ResponseStruct<string>;
+    static struct(struct: StatusStruct, body?: string): ResponseStruct<string>;
     /**
      * 发送状态码
      * @param {Number} code
@@ -37,28 +37,28 @@ export declare class Response<T> {
      * ```
      */
     static ok<U>(body: U, type?: string): ResponseStruct<U>;
-    static noContent(): ResponseStruct<string>;
-    static seeOther(): ResponseStruct<string>;
-    static notModified(): ResponseStruct<string>;
-    static unused(): ResponseStruct<string>;
-    static badRequest(): ResponseStruct<string>;
-    static unauthorized(): ResponseStruct<string>;
-    static forbidden(): ResponseStruct<string>;
-    static notFount(): ResponseStruct<string>;
-    static methodNotAllowed(): ResponseStruct<string>;
-    static notAcceptable(): ResponseStruct<string>;
-    static requestTimeout(): ResponseStruct<string>;
-    static conflict(): ResponseStruct<string>;
-    static gone(): ResponseStruct<string>;
-    static lengthRequired(): ResponseStruct<string>;
-    static requestEntityTooLarge(): ResponseStruct<string>;
-    static requestURITooLong(): ResponseStruct<string>;
-    static unsupportedMediaType(): ResponseStruct<string>;
-    static expectationFailed(): ResponseStruct<string>;
-    static internalServerError(): ResponseStruct<string>;
-    static notImplemented(): ResponseStruct<string>;
-    static badGateway(): ResponseStruct<string>;
-    static serviceUnavailable(): ResponseStruct<string>;
-    static gatewayTimeout(): ResponseStruct<string>;
-    static httpVersionNotSupported(): ResponseStruct<string>;
+    static noContent(body?: string): ResponseStruct<string>;
+    static seeOther(body?: string): ResponseStruct<string>;
+    static notModified(body?: string): ResponseStruct<string>;
+    static unused(body?: string): ResponseStruct<string>;
+    static badRequest(body?: string): ResponseStruct<string>;
+    static unauthorized(body?: string): ResponseStruct<string>;
+    static forbidden(body?: string): ResponseStruct<string>;
+    static notFount(body?: string): ResponseStruct<string>;
+    static methodNotAllowed(body?: string): ResponseStruct<string>;
+    static notAcceptable(body?: string): ResponseStruct<string>;
+    static requestTimeout(body?: string): ResponseStruct<string>;
+    static conflict(body?: string): ResponseStruct<string>;
+    static gone(body?: string): ResponseStruct<string>;
+    static lengthRequired(body?: string): ResponseStruct<string>;
+    static requestEntityTooLarge(body?: string): ResponseStruct<string>;
+    static requestURITooLong(body?: string): ResponseStruct<string>;
+    static unsupportedMediaType(body?: string): ResponseStruct<string>;
+    static expectationFailed(body?: string): ResponseStruct<string>;
+    static internalServerError(body?: string): ResponseStruct<string>;
+    static notImplemented(body?: string): ResponseStruct<string>;
+    static badGateway(body?: string): ResponseStruct<string>;
+    static serviceUnavailable(body?: string): ResponseStruct<string>;
+    static gatewayTimeout(body?: string): ResponseStruct<string>;
+    static httpVersionNotSupported(body?: string): ResponseStruct<string>;
 }

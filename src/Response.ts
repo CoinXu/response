@@ -30,8 +30,8 @@ export class Response<T> {
     }
   }
 
-  static struct (struct: StatusStruct): ResponseStruct<string> {
-    return new Response(struct.code, struct.body, MEDIA_TYPES.TEXT_PLAIN).serialize()
+  static struct (struct: StatusStruct, body?: string): ResponseStruct<string> {
+    return new Response<string>(struct.code, body || struct.body, MEDIA_TYPES.TEXT_PLAIN).serialize()
   }
 
   /**
@@ -63,106 +63,106 @@ export class Response<T> {
    * ```
    */
   static ok<U> (body: U, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<U> {
-    return new Response<U>(HTTP_RESPONSE_STATUS.Ok.code, body, type).serialize()
+    return new Response<U>(HTTP_RESPONSE_STATUS.OK.code, body, type).serialize()
   }
 
-  static noContent (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.NoContent)
+  static noContent (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.NO_CONTENT, body)
   }
 
   // ========= 3xx =========
-  static seeOther (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.SeeOther)
+  static seeOther (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.SEE_OTHER, body)
   }
 
-  static notModified (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.NotModified)
+  static notModified (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.NOT_MODIFIED, body)
   }
 
-  static unused (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.Unused)
+  static unused (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.UNUSED, body)
   }
 
   // ========= 4xx =========
-  static badRequest (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.BadRequest)
+  static badRequest (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.BAD_REQUEST, body)
   }
 
-  static unauthorized (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.BadRequest)
+  static unauthorized (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.UNAUTHORIZED, body)
   }
 
-  static forbidden (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.BadRequest)
+  static forbidden (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.FORBIDDEN, body)
   }
 
-  static notFount (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.NotFount)
+  static notFount (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.NOT_FOUNT, body)
   }
 
-  static methodNotAllowed (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.MethodNotAllowed)
+  static methodNotAllowed (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.METHOD_NOT_ALLOWED, body)
   }
 
-  static notAcceptable (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.NotAcceptable)
+  static notAcceptable (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.NOT_ACCEPTABLE, body)
   }
 
-  static requestTimeout (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.RequestTimeout)
+  static requestTimeout (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.REQUEST_TIMEOUT, body)
   }
 
-  static conflict (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.Conflict)
+  static conflict (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.CONFLICT, body)
   }
 
-  static gone (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.Gone)
+  static gone (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.GONE, body)
   }
 
-  static lengthRequired (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.LengthRequired)
+  static lengthRequired (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.LENGTH_REQUIRED, body)
   }
 
-  static requestEntityTooLarge (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.RequestEntityTooLarge)
+  static requestEntityTooLarge (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.REQUEST_ENTITY_TOO_LARGE, body)
   }
 
-  static requestURITooLong (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.RequestURITooLong)
+  static requestURITooLong (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.REQUEST_URI_TOO_LONG, body)
   }
 
-  static unsupportedMediaType (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.UnsupportedMediaType)
+  static unsupportedMediaType (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.UNSUPPORTED_MEDIA_TYPE, body)
   }
 
-  static expectationFailed (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.ExpectationFailed)
+  static expectationFailed (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.EXPECTATION_FAILED, body)
   }
 
   // ========= 5xx =========
-  static internalServerError (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.InternalServerError)
+  static internalServerError (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.INTERNAL_SERVERERROR, body)
   }
 
-  static notImplemented (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.NotImplemented)
+  static notImplemented (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.NOT_IMPLEMENTED, body)
   }
 
-  static badGateway (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.BadGateway)
+  static badGateway (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.BAD_GATEWAY, body)
   }
 
-  static serviceUnavailable (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.ServiceUnavailable)
+  static serviceUnavailable (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.SERVICE_UNAVAILABLE, body)
   }
 
-  static gatewayTimeout (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.GatewayTimeout)
+  static gatewayTimeout (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.GATEWAY_TIMEOUT, body)
   }
 
-  static httpVersionNotSupported (): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.HTTPVersionNotSupported)
+  static httpVersionNotSupported (body?: string): ResponseStruct<string> {
+    return Response.struct(HTTP_RESPONSE_STATUS.HTTP_VERSION_NOT_SUPPORTED, body)
   }
 }
 
