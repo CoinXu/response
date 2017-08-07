@@ -51,7 +51,10 @@ export class Response<T> {
 
   // ========= static =========
 
-  // ========= 2xx =========
+  // ======================
+  // Successful
+  // 2xx
+
   /**
    * @param body
    * @param type
@@ -70,7 +73,10 @@ export class Response<T> {
     return Response.struct(HTTP_RESPONSE_STATUS.NO_CONTENT, body)
   }
 
-  // ========= 3xx =========
+  // ======================
+  // Multiple Choices
+  // 3xx
+
   static seeOther (body?: string): ResponseStruct<string> {
     return Response.struct(HTTP_RESPONSE_STATUS.SEE_OTHER, body)
   }
@@ -83,7 +89,9 @@ export class Response<T> {
     return Response.struct(HTTP_RESPONSE_STATUS.UNUSED, body)
   }
 
-  // ========= 4xx =========
+  // ======================
+  // Client Error
+  // 4xx
   static badRequest (body?: string): ResponseStruct<string> {
     return Response.struct(HTTP_RESPONSE_STATUS.BAD_REQUEST, body)
   }
@@ -139,8 +147,9 @@ export class Response<T> {
   static expectationFailed (body?: string): ResponseStruct<string> {
     return Response.struct(HTTP_RESPONSE_STATUS.EXPECTATION_FAILED, body)
   }
-
-  // ========= 5xx =========
+  // ======================
+  // Server Error
+  // 5xx
   static internalServerError (body?: string): ResponseStruct<string> {
     return Response.struct(HTTP_RESPONSE_STATUS.INTERNAL_SERVERERROR, body)
   }
