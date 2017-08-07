@@ -2,7 +2,7 @@
  * Created by asd on 17-8-5.
  */
 
-import { HTTP_RESPONSE_STATUS, StatusStruct } from './http-response-status'
+import { HTTP_RESPONSE_STATUS, Status } from './http-response-status'
 import { MEDIA_TYPES } from './media-types'
 
 export interface ResponseStruct<T> {
@@ -11,45 +11,24 @@ export interface ResponseStruct<T> {
   body: T
 }
 
-export class Response<T> {
-  private code: number
-  private body: T
-  private type: string
+export class Response {
 
-  constructor (code: number, body: T, type: string) {
-    this.code = code
-    this.body = body
-    this.type = type
-  }
-
-  serialize (): ResponseStruct<T> {
-    return {
-      code: this.code,
-      type: this.type,
-      body: this.body
-    }
-  }
-
-  static struct (struct: StatusStruct, body?: string): ResponseStruct<string> {
-    return new Response<string>(struct.code, body || struct.body, MEDIA_TYPES.TEXT_PLAIN).serialize()
+  static struct<T> (body: T, code: number, type: string): ResponseStruct<T> {
+    return { body, code, type }
   }
 
   /**
    * 发送状态码
-   * @param {Number} code
-   * @param {String} body
-   * @param {String} type
+   * @param {Status} status
    * @return {ResponseStruct<string>}
    * @example
    * ```js
-   * Response.status(200, 'ok')
+   * Response.status(HTTP_RESPONSE_STATUS.OK)
    * ```
    */
-  static status (code: number, body: string, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<string> {
-    return new Response(code, body, type).serialize()
+  static status (status: Status): ResponseStruct<string> {
+    return this.struct<string>(status.body, status.code, MEDIA_TYPES.TEXT_PLAIN)
   }
-
-  // ========= static =========
 
   // ======================
   // Successful
@@ -61,117 +40,117 @@ export class Response<T> {
    * @return {ResponseStruct}
    * @example
    * ```js
-   * Response.ok()
    * Response.ok('{"id":"a"}', MEDIA_TYPES.APPLICATION_JSON)
    * ```
    */
-  static ok<U> (body: U, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<U> {
-    return new Response<U>(HTTP_RESPONSE_STATUS.OK.code, body, type).serialize()
+  static ok<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.OK.code, type)
   }
 
-  static noContent (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.NO_CONTENT, body)
+  static noContent<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.NO_CONTENT.code, type)
   }
 
   // ======================
   // Multiple Choices
   // 3xx
-
-  static seeOther (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.SEE_OTHER, body)
+  static seeOther<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.SEE_OTHER.code, type)
   }
 
-  static notModified (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.NOT_MODIFIED, body)
+  static notModified<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.NOT_MODIFIED.code, type)
   }
 
-  static unused (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.UNUSED, body)
+  static unused<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.UNUSED.code, type)
   }
 
   // ======================
   // Client Error
   // 4xx
-  static badRequest (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.BAD_REQUEST, body)
+  static badRequest<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.BAD_REQUEST.code, type)
   }
 
-  static unauthorized (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.UNAUTHORIZED, body)
+  static unauthorized<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.UNAUTHORIZED.code, type)
   }
 
-  static forbidden (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.FORBIDDEN, body)
+  static forbidden<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.FORBIDDEN.code, type)
   }
 
-  static notFount (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.NOT_FOUNT, body)
+  static notFount<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.NOT_FOUNT.code, type)
   }
 
-  static methodNotAllowed (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.METHOD_NOT_ALLOWED, body)
+  static methodNotAllowed<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.METHOD_NOT_ALLOWED.code, type)
   }
 
-  static notAcceptable (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.NOT_ACCEPTABLE, body)
+  static notAcceptable<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.NOT_ACCEPTABLE.code, type)
   }
 
-  static requestTimeout (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.REQUEST_TIMEOUT, body)
+  static requestTimeout<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.REQUEST_TIMEOUT.code, type)
   }
 
-  static conflict (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.CONFLICT, body)
+  static conflict<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.CONFLICT.code, type)
   }
 
-  static gone (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.GONE, body)
+  static gone<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.GONE.code, type)
   }
 
-  static lengthRequired (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.LENGTH_REQUIRED, body)
+  static lengthRequired<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.LENGTH_REQUIRED.code, type)
   }
 
-  static requestEntityTooLarge (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.REQUEST_ENTITY_TOO_LARGE, body)
+  static requestEntityTooLarge<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.REQUEST_ENTITY_TOO_LARGE.code, type)
   }
 
-  static requestURITooLong (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.REQUEST_URI_TOO_LONG, body)
+  static requestURITooLong<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.REQUEST_URI_TOO_LONG.code, type)
   }
 
-  static unsupportedMediaType (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.UNSUPPORTED_MEDIA_TYPE, body)
+  static unsupportedMediaType<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.UNSUPPORTED_MEDIA_TYPE.code, type)
   }
 
-  static expectationFailed (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.EXPECTATION_FAILED, body)
+  static expectationFailed<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.EXPECTATION_FAILED.code, type)
   }
+
   // ======================
   // Server Error
   // 5xx
-  static internalServerError (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.INTERNAL_SERVERERROR, body)
+
+  static internalServerError<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.INTERNAL_SERVERERROR.code, type)
   }
 
-  static notImplemented (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.NOT_IMPLEMENTED, body)
+  static notImplemented<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.NOT_IMPLEMENTED.code, type)
   }
 
-  static badGateway (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.BAD_GATEWAY, body)
+  static badGateway<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.BAD_GATEWAY.code, type)
   }
 
-  static serviceUnavailable (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.SERVICE_UNAVAILABLE, body)
+  static serviceUnavailable<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.SERVICE_UNAVAILABLE.code, type)
   }
 
-  static gatewayTimeout (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.GATEWAY_TIMEOUT, body)
+  static gatewayTimeout<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.GATEWAY_TIMEOUT.code, type)
   }
 
-  static httpVersionNotSupported (body?: string): ResponseStruct<string> {
-    return Response.struct(HTTP_RESPONSE_STATUS.HTTP_VERSION_NOT_SUPPORTED, body)
+  static httpVersionNotSupported<T> (body: T, type = MEDIA_TYPES.TEXT_PLAIN): ResponseStruct<T> {
+    return this.struct<T>(body, HTTP_RESPONSE_STATUS.HTTP_VERSION_NOT_SUPPORTED.code, type)
   }
 }
 

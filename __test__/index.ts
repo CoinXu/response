@@ -23,13 +23,11 @@ let code: number
 let type: string
 
 // instance
-const res = new Response<string>(
-  HTTP_RESPONSE_STATUS.OK.code,
+const struct = Response.struct<string>(
   HTTP_RESPONSE_STATUS.OK.body,
+  HTTP_RESPONSE_STATUS.OK.code,
   MEDIA_TYPES.TEXT_PLAIN
 )
-
-const struct = res.serialize()
 
 describe('Response', function () {
 
@@ -51,11 +49,11 @@ describe('Response', function () {
       age: number
     }
 
-    const sres = new Response<S>(
-      HTTP_RESPONSE_STATUS.OK.code,
+    const sres = Response.struct(
       { id: 'id', name: 'name', age: 1 },
+      HTTP_RESPONSE_STATUS.OK.code,
       MEDIA_TYPES.APPLICATION_JSON
-    ).serialize()
+    )
 
     let sbody: S = sres.body
     code = sres.code
@@ -73,41 +71,45 @@ describe('Response', function () {
 
   // stati cmethods
   const responseArr: Array<[string, ResponseStruct<string>]> = [
-    ['Response.struct', Response.struct(HTTP_RESPONSE_STATUS.HTTP_VERSION_NOT_SUPPORTED)],
-    ['Response.status', Response.status(404, '<h3>404 Not Fount</h3>', MEDIA_TYPES.TEXT_HTML)],
+    ['Response.struct', Response.struct<string>(
+      HTTP_RESPONSE_STATUS.HTTP_VERSION_NOT_SUPPORTED.body,
+      HTTP_RESPONSE_STATUS.HTTP_VERSION_NOT_SUPPORTED.code,
+      MEDIA_TYPES.TEXT_PLAIN
+    )],
+    ['Response.status', Response.status(HTTP_RESPONSE_STATUS.BAD_REQUEST)],
     // 2xx
-    ['Response.noContent', Response.noContent()],
+    ['Response.noContent', Response.noContent<string>(HTTP_RESPONSE_STATUS.NO_CONTENT.body)],
 
     // 3xx
     ['Response.seeOther', Response.ok<string>('ok')],
-    ['Response.notModified', Response.notModified()],
-    ['Response.unused', Response.unused()],
+    ['Response.notModified', Response.notModified<string>(HTTP_RESPONSE_STATUS.NOT_MODIFIED.body)],
+    ['Response.unused', Response.unused<string>(HTTP_RESPONSE_STATUS.UNUSED.body)],
 
     // 4xx
-    ['Response.badRequest', Response.badRequest()],
-    ['Response.unauthorized', Response.unauthorized()],
-    ['Response.forbidden', Response.forbidden()],
-    ['Response.notFount', Response.notFount()],
-    ['Response.methodNotAllowed', Response.methodNotAllowed()],
-    ['Response.notAcceptable', Response.notAcceptable()],
-    ['Response.requestTimeout', Response.requestTimeout()],
-    ['Response.conflict', Response.conflict()],
-    ['Response.gone', Response.gone()],
-    ['Response.lengthRequired', Response.lengthRequired()],
-    ['Response.requestEntityTooLarge', Response.requestEntityTooLarge()],
-    ['Response.requestURITooLong', Response.requestURITooLong()],
-    ['Response.unsupportedMediaType', Response.unsupportedMediaType()],
-    ['Response.expectationFailed', Response.expectationFailed()],
+    ['Response.badRequest', Response.badRequest<string>(HTTP_RESPONSE_STATUS.BAD_REQUEST.body)],
+    ['Response.unauthorized', Response.unauthorized<string>(HTTP_RESPONSE_STATUS.UNAUTHORIZED.body)],
+    ['Response.forbidden', Response.forbidden<string>(HTTP_RESPONSE_STATUS.FORBIDDEN.body)],
+    ['Response.notFount', Response.notFount<string>(HTTP_RESPONSE_STATUS.NOT_FOUNT.body)],
+    ['Response.methodNotAllowed', Response.methodNotAllowed<string>(HTTP_RESPONSE_STATUS.METHOD_NOT_ALLOWED.body)],
+    ['Response.notAcceptable', Response.notAcceptable<string>(HTTP_RESPONSE_STATUS.NOT_ACCEPTABLE.body)],
+    ['Response.requestTimeout', Response.requestTimeout<string>(HTTP_RESPONSE_STATUS.REQUEST_TIMEOUT.body)],
+    ['Response.conflict', Response.conflict<string>(HTTP_RESPONSE_STATUS.CONFLICT.body)],
+    ['Response.gone', Response.gone<string>(HTTP_RESPONSE_STATUS.GONE.body)],
+    ['Response.lengthRequired', Response.lengthRequired<string>(HTTP_RESPONSE_STATUS.LENGTH_REQUIRED.body)],
+    ['Response.requestEntityTooLarge', Response.requestEntityTooLarge<string>(HTTP_RESPONSE_STATUS.REQUEST_ENTITY_TOO_LARGE.body)],
+    ['Response.requestURITooLong', Response.requestURITooLong<string>(HTTP_RESPONSE_STATUS.REQUEST_URI_TOO_LONG.body)],
+    ['Response.unsupportedMediaType', Response.unsupportedMediaType<string>(HTTP_RESPONSE_STATUS.UNSUPPORTED_MEDIA_TYPE.body)],
+    ['Response.expectationFailed', Response.expectationFailed<string>(HTTP_RESPONSE_STATUS.EXPECTATION_FAILED.body)],
 
     // 5xx
-    ['Response.internalServerError', Response.internalServerError()],
-    ['Response.notImplemented', Response.notImplemented()],
-    ['Response.badGateway', Response.badGateway()],
-    ['Response.serviceUnavailable', Response.serviceUnavailable()],
-    ['Response.gatewayTimeout', Response.gatewayTimeout()],
-    ['Response.httpVersionNotSupported', Response.httpVersionNotSupported()],
+    ['Response.internalServerError', Response.internalServerError<string>(HTTP_RESPONSE_STATUS.INTERNAL_SERVERERROR.body)],
+    ['Response.notImplemented', Response.notImplemented<string>(HTTP_RESPONSE_STATUS.NOT_IMPLEMENTED.body)],
+    ['Response.badGateway', Response.badGateway<string>(HTTP_RESPONSE_STATUS.BAD_GATEWAY.body)],
+    ['Response.serviceUnavailable', Response.serviceUnavailable<string>(HTTP_RESPONSE_STATUS.SERVICE_UNAVAILABLE.body)],
+    ['Response.gatewayTimeout', Response.gatewayTimeout<string>(HTTP_RESPONSE_STATUS.GATEWAY_TIMEOUT.body)],
+    ['Response.httpVersionNotSupported', Response.httpVersionNotSupported<string>(HTTP_RESPONSE_STATUS.HTTP_VERSION_NOT_SUPPORTED.body)],
 
-    ['Response.badRequest with body param', Response.badRequest('need id param')]
+    ['Response.badRequest with body param', Response.badRequest<string>('need id param')]
   ]
 
   for (let r of responseArr) {

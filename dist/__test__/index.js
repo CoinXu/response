@@ -20,8 +20,7 @@ var body;
 var code;
 var type;
 // instance
-var res = new src_1.Response(src_1.HTTP_RESPONSE_STATUS.OK.code, src_1.HTTP_RESPONSE_STATUS.OK.body, src_1.MEDIA_TYPES.TEXT_PLAIN);
-var struct = res.serialize();
+var struct = src_1.Response.struct(src_1.HTTP_RESPONSE_STATUS.OK.body, src_1.HTTP_RESPONSE_STATUS.OK.code, src_1.MEDIA_TYPES.TEXT_PLAIN);
 describe('Response', function () {
     it('new Response', function () {
         body = struct.body;
@@ -32,7 +31,7 @@ describe('Response', function () {
         assert_1.ok(isString(type));
     });
     it('Use Interface structure', function () {
-        var sres = new src_1.Response(src_1.HTTP_RESPONSE_STATUS.OK.code, { id: 'id', name: 'name', age: 1 }, src_1.MEDIA_TYPES.APPLICATION_JSON).serialize();
+        var sres = src_1.Response.struct({ id: 'id', name: 'name', age: 1 }, src_1.HTTP_RESPONSE_STATUS.OK.code, src_1.MEDIA_TYPES.APPLICATION_JSON);
         var sbody = sres.body;
         code = sres.code;
         type = sres.type;
@@ -46,36 +45,36 @@ describe('Response', function () {
     });
     // stati cmethods
     var responseArr = [
-        ['Response.struct', src_1.Response.struct(src_1.HTTP_RESPONSE_STATUS.HTTP_VERSION_NOT_SUPPORTED)],
-        ['Response.status', src_1.Response.status(404, '<h3>404 Not Fount</h3>', src_1.MEDIA_TYPES.TEXT_HTML)],
+        ['Response.struct', src_1.Response.struct(src_1.HTTP_RESPONSE_STATUS.HTTP_VERSION_NOT_SUPPORTED.body, src_1.HTTP_RESPONSE_STATUS.HTTP_VERSION_NOT_SUPPORTED.code, src_1.MEDIA_TYPES.TEXT_PLAIN)],
+        ['Response.status', src_1.Response.status(src_1.HTTP_RESPONSE_STATUS.BAD_REQUEST)],
         // 2xx
-        ['Response.noContent', src_1.Response.noContent()],
+        ['Response.noContent', src_1.Response.noContent(src_1.HTTP_RESPONSE_STATUS.NO_CONTENT.body)],
         // 3xx
         ['Response.seeOther', src_1.Response.ok('ok')],
-        ['Response.notModified', src_1.Response.notModified()],
-        ['Response.unused', src_1.Response.unused()],
+        ['Response.notModified', src_1.Response.notModified(src_1.HTTP_RESPONSE_STATUS.NOT_MODIFIED.body)],
+        ['Response.unused', src_1.Response.unused(src_1.HTTP_RESPONSE_STATUS.UNUSED.body)],
         // 4xx
-        ['Response.badRequest', src_1.Response.badRequest()],
-        ['Response.unauthorized', src_1.Response.unauthorized()],
-        ['Response.forbidden', src_1.Response.forbidden()],
-        ['Response.notFount', src_1.Response.notFount()],
-        ['Response.methodNotAllowed', src_1.Response.methodNotAllowed()],
-        ['Response.notAcceptable', src_1.Response.notAcceptable()],
-        ['Response.requestTimeout', src_1.Response.requestTimeout()],
-        ['Response.conflict', src_1.Response.conflict()],
-        ['Response.gone', src_1.Response.gone()],
-        ['Response.lengthRequired', src_1.Response.lengthRequired()],
-        ['Response.requestEntityTooLarge', src_1.Response.requestEntityTooLarge()],
-        ['Response.requestURITooLong', src_1.Response.requestURITooLong()],
-        ['Response.unsupportedMediaType', src_1.Response.unsupportedMediaType()],
-        ['Response.expectationFailed', src_1.Response.expectationFailed()],
+        ['Response.badRequest', src_1.Response.badRequest(src_1.HTTP_RESPONSE_STATUS.BAD_REQUEST.body)],
+        ['Response.unauthorized', src_1.Response.unauthorized(src_1.HTTP_RESPONSE_STATUS.UNAUTHORIZED.body)],
+        ['Response.forbidden', src_1.Response.forbidden(src_1.HTTP_RESPONSE_STATUS.FORBIDDEN.body)],
+        ['Response.notFount', src_1.Response.notFount(src_1.HTTP_RESPONSE_STATUS.NOT_FOUNT.body)],
+        ['Response.methodNotAllowed', src_1.Response.methodNotAllowed(src_1.HTTP_RESPONSE_STATUS.METHOD_NOT_ALLOWED.body)],
+        ['Response.notAcceptable', src_1.Response.notAcceptable(src_1.HTTP_RESPONSE_STATUS.NOT_ACCEPTABLE.body)],
+        ['Response.requestTimeout', src_1.Response.requestTimeout(src_1.HTTP_RESPONSE_STATUS.REQUEST_TIMEOUT.body)],
+        ['Response.conflict', src_1.Response.conflict(src_1.HTTP_RESPONSE_STATUS.CONFLICT.body)],
+        ['Response.gone', src_1.Response.gone(src_1.HTTP_RESPONSE_STATUS.GONE.body)],
+        ['Response.lengthRequired', src_1.Response.lengthRequired(src_1.HTTP_RESPONSE_STATUS.LENGTH_REQUIRED.body)],
+        ['Response.requestEntityTooLarge', src_1.Response.requestEntityTooLarge(src_1.HTTP_RESPONSE_STATUS.REQUEST_ENTITY_TOO_LARGE.body)],
+        ['Response.requestURITooLong', src_1.Response.requestURITooLong(src_1.HTTP_RESPONSE_STATUS.REQUEST_URI_TOO_LONG.body)],
+        ['Response.unsupportedMediaType', src_1.Response.unsupportedMediaType(src_1.HTTP_RESPONSE_STATUS.UNSUPPORTED_MEDIA_TYPE.body)],
+        ['Response.expectationFailed', src_1.Response.expectationFailed(src_1.HTTP_RESPONSE_STATUS.EXPECTATION_FAILED.body)],
         // 5xx
-        ['Response.internalServerError', src_1.Response.internalServerError()],
-        ['Response.notImplemented', src_1.Response.notImplemented()],
-        ['Response.badGateway', src_1.Response.badGateway()],
-        ['Response.serviceUnavailable', src_1.Response.serviceUnavailable()],
-        ['Response.gatewayTimeout', src_1.Response.gatewayTimeout()],
-        ['Response.httpVersionNotSupported', src_1.Response.httpVersionNotSupported()],
+        ['Response.internalServerError', src_1.Response.internalServerError(src_1.HTTP_RESPONSE_STATUS.INTERNAL_SERVERERROR.body)],
+        ['Response.notImplemented', src_1.Response.notImplemented(src_1.HTTP_RESPONSE_STATUS.NOT_IMPLEMENTED.body)],
+        ['Response.badGateway', src_1.Response.badGateway(src_1.HTTP_RESPONSE_STATUS.BAD_GATEWAY.body)],
+        ['Response.serviceUnavailable', src_1.Response.serviceUnavailable(src_1.HTTP_RESPONSE_STATUS.SERVICE_UNAVAILABLE.body)],
+        ['Response.gatewayTimeout', src_1.Response.gatewayTimeout(src_1.HTTP_RESPONSE_STATUS.GATEWAY_TIMEOUT.body)],
+        ['Response.httpVersionNotSupported', src_1.Response.httpVersionNotSupported(src_1.HTTP_RESPONSE_STATUS.HTTP_VERSION_NOT_SUPPORTED.body)],
         ['Response.badRequest with body param', src_1.Response.badRequest('need id param')]
     ];
     var _loop_1 = function (r) {

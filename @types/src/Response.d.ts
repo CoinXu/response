@@ -1,64 +1,56 @@
 /**
  * Created by asd on 17-8-5.
  */
-import { StatusStruct } from './http-response-status';
+import { Status } from './http-response-status';
 export interface ResponseStruct<T> {
     code: number;
     type: string;
     body: T;
 }
-export declare class Response<T> {
-    private code;
-    private body;
-    private type;
-    constructor(code: number, body: T, type: string);
-    serialize(): ResponseStruct<T>;
-    static struct(struct: StatusStruct, body?: string): ResponseStruct<string>;
+export declare class Response {
+    static struct<T>(body: T, code: number, type: string): ResponseStruct<T>;
     /**
      * 发送状态码
-     * @param {Number} code
-     * @param {String} body
-     * @param {String} type
+     * @param {Status} status
      * @return {ResponseStruct<string>}
      * @example
      * ```js
-     * Response.status(200, 'ok')
+     * Response.status(HTTP_RESPONSE_STATUS.OK)
      * ```
      */
-    static status(code: number, body: string, type?: string): ResponseStruct<string>;
+    static status(status: Status): ResponseStruct<string>;
     /**
      * @param body
      * @param type
      * @return {ResponseStruct}
      * @example
      * ```js
-     * Response.ok()
      * Response.ok('{"id":"a"}', MEDIA_TYPES.APPLICATION_JSON)
      * ```
      */
-    static ok<U>(body: U, type?: string): ResponseStruct<U>;
-    static noContent(body?: string): ResponseStruct<string>;
-    static seeOther(body?: string): ResponseStruct<string>;
-    static notModified(body?: string): ResponseStruct<string>;
-    static unused(body?: string): ResponseStruct<string>;
-    static badRequest(body?: string): ResponseStruct<string>;
-    static unauthorized(body?: string): ResponseStruct<string>;
-    static forbidden(body?: string): ResponseStruct<string>;
-    static notFount(body?: string): ResponseStruct<string>;
-    static methodNotAllowed(body?: string): ResponseStruct<string>;
-    static notAcceptable(body?: string): ResponseStruct<string>;
-    static requestTimeout(body?: string): ResponseStruct<string>;
-    static conflict(body?: string): ResponseStruct<string>;
-    static gone(body?: string): ResponseStruct<string>;
-    static lengthRequired(body?: string): ResponseStruct<string>;
-    static requestEntityTooLarge(body?: string): ResponseStruct<string>;
-    static requestURITooLong(body?: string): ResponseStruct<string>;
-    static unsupportedMediaType(body?: string): ResponseStruct<string>;
-    static expectationFailed(body?: string): ResponseStruct<string>;
-    static internalServerError(body?: string): ResponseStruct<string>;
-    static notImplemented(body?: string): ResponseStruct<string>;
-    static badGateway(body?: string): ResponseStruct<string>;
-    static serviceUnavailable(body?: string): ResponseStruct<string>;
-    static gatewayTimeout(body?: string): ResponseStruct<string>;
-    static httpVersionNotSupported(body?: string): ResponseStruct<string>;
+    static ok<T>(body: T, type?: string): ResponseStruct<T>;
+    static noContent<T>(body: T, type?: string): ResponseStruct<T>;
+    static seeOther<T>(body: T, type?: string): ResponseStruct<T>;
+    static notModified<T>(body: T, type?: string): ResponseStruct<T>;
+    static unused<T>(body: T, type?: string): ResponseStruct<T>;
+    static badRequest<T>(body: T, type?: string): ResponseStruct<T>;
+    static unauthorized<T>(body: T, type?: string): ResponseStruct<T>;
+    static forbidden<T>(body: T, type?: string): ResponseStruct<T>;
+    static notFount<T>(body: T, type?: string): ResponseStruct<T>;
+    static methodNotAllowed<T>(body: T, type?: string): ResponseStruct<T>;
+    static notAcceptable<T>(body: T, type?: string): ResponseStruct<T>;
+    static requestTimeout<T>(body: T, type?: string): ResponseStruct<T>;
+    static conflict<T>(body: T, type?: string): ResponseStruct<T>;
+    static gone<T>(body: T, type?: string): ResponseStruct<T>;
+    static lengthRequired<T>(body: T, type?: string): ResponseStruct<T>;
+    static requestEntityTooLarge<T>(body: T, type?: string): ResponseStruct<T>;
+    static requestURITooLong<T>(body: T, type?: string): ResponseStruct<T>;
+    static unsupportedMediaType<T>(body: T, type?: string): ResponseStruct<T>;
+    static expectationFailed<T>(body: T, type?: string): ResponseStruct<T>;
+    static internalServerError<T>(body: T, type?: string): ResponseStruct<T>;
+    static notImplemented<T>(body: T, type?: string): ResponseStruct<T>;
+    static badGateway<T>(body: T, type?: string): ResponseStruct<T>;
+    static serviceUnavailable<T>(body: T, type?: string): ResponseStruct<T>;
+    static gatewayTimeout<T>(body: T, type?: string): ResponseStruct<T>;
+    static httpVersionNotSupported<T>(body: T, type?: string): ResponseStruct<T>;
 }

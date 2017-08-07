@@ -4,7 +4,7 @@
  * https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
  */
 
-export interface StatusStruct {
+export interface Status {
   code: number
   body: string
 }
@@ -15,7 +15,7 @@ export interface StatusStruct {
  * @param body
  * @return {{code: number, body: string}}
  */
-function struct (code: number, body: string): StatusStruct {
+function struct (code: number, body: string): Status {
   return { code, body }
 }
 
