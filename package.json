@@ -1,6 +1,6 @@
 {
   "name": "response",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Coinxu",
   "main": "./dist/src",
   "typings": "./@types/src/index.d.ts",

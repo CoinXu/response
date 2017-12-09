@@ -31,7 +31,8 @@ exports.HTTP_RESPONSE_STATUS = {
     NOT_ACCEPTABLE: struct(406, 'Not Acceptable'),
     REQUEST_TIMEOUT: struct(408, 'Request Timeout'),
     CONFLICT: struct(409, 'Conflict'),
-    // The requested resource is no longer available at the server and no forwarding address is known.
+    // The requested resource is no longer available at the server
+    // and no forwarding address is known.
     GONE: struct(410, 'Gone'),
     LENGTH_REQUIRED: struct(411, 'Length Required'),
     REQUEST_ENTITY_TOO_LARGE: struct(413, 'Request Entity TooLarge'),

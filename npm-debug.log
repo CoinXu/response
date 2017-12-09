@@ -1,0 +1,88 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/coinxu/.nvm/versions/node/v6.4.0/bin/node',
+1 verbose cli   '/Users/coinxu/.nvm/versions/node/v6.4.0/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.10.3
+3 info using node@v6.4.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/coinxu/github/response',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/coinxu/.npm/response/0.0.2/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/coinxu/.npm correctMkdir not in flight; initializing
+10 info lifecycle response@0.0.2~prepublish: response@0.0.2
+11 verbose lifecycle response@0.0.2~prepublish: unsafe-perm in lifecycle true
+12 verbose lifecycle response@0.0.2~prepublish: PATH: /Users/coinxu/.nvm/versions/node/v6.4.0/lib/node_modules/npm/bin/node-gyp-bin:/Users/coinxu/github/response/node_modules/.bin:/Users/coinxu/.nvm/versions/node/v6.4.0/bin:/Users/coinxu/.nvm/versions/node/v6.4.0/bin:/Users/coinxu/ImageMagick-7.0.1/bin:/usr/local/mysql/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Users/coinxu/Library/Android/sdk/bin:/Users/coinxu/.gradle/wrapper/dists/gradle-4.3/bin:/Users/coinxu/.rvm/bin
+13 verbose lifecycle response@0.0.2~prepublish: CWD: /Users/coinxu/github/response
+14 silly lifecycle response@0.0.2~prepublish: Args: [ '-c', 'npm run test' ]
+15 silly lifecycle response@0.0.2~prepublish: Returned: code: 0  signal: null
+16 verbose tar pack [ '/Users/coinxu/.npm/response/0.0.2/package.tgz',
+16 verbose tar pack   '/Users/coinxu/github/response' ]
+17 verbose tarball /Users/coinxu/.npm/response/0.0.2/package.tgz
+18 verbose folder /Users/coinxu/github/response
+19 verbose addLocalTarball adding from inside cache /Users/coinxu/.npm/response/0.0.2/package.tgz
+20 verbose correctMkdir /Users/coinxu/.npm correctMkdir not in flight; initializing
+21 silly cache afterAdd response@0.0.2
+22 verbose afterAdd /Users/coinxu/.npm/response/0.0.2/package/package.json not in flight; writing
+23 verbose correctMkdir /Users/coinxu/.npm correctMkdir not in flight; initializing
+24 verbose afterAdd /Users/coinxu/.npm/response/0.0.2/package/package.json written
+25 silly publish { name: 'response',
+25 silly publish   version: '0.0.2',
+25 silly publish   author: { name: 'Coinxu' },
+25 silly publish   main: './dist/src',
+25 silly publish   typings: './@types/src/index.d.ts',
+25 silly publish   scripts:
+25 silly publish    { build: 'rm -rf ./dist && ./node_modules/.bin/tsc',
+25 silly publish      test: 'npm run build && ./node_modules/.bin/mocha ./dist/__test__',
+25 silly publish      prepublish: 'npm run test' },
+25 silly publish   dependencies: { '@types/node': '8.0.19', '@types/mocha': '2.2.41' },
+25 silly publish   devDependencies: { typescript: '^2.4.2', mocha: '*' },
+25 silly publish   readme: '[![Build Status](https://travis-ci.org/CoinXu/response.svg?branch=master)](https://travis-ci.org/CoinXu/response)\n\nResponse Class for nodejs',
+25 silly publish   readmeFilename: 'README.md',
+25 silly publish   gitHead: '67e62b0020cca0951e9d105cbf0be270d1586d2d',
+25 silly publish   description: '[![Build Status](https://travis-ci.org/CoinXu/response.svg?branch=master)](https://travis-ci.org/CoinXu/response)',
+25 silly publish   _id: 'response@0.0.2',
+25 silly publish   _shasum: '5295c9596ed7c6661ee06eda55d801ffd4a12039',
+25 silly publish   _from: '.' }
+26 verbose getPublishConfig undefined
+27 silly mapToRegistry name response
+28 silly mapToRegistry using default registry
+29 silly mapToRegistry registry http://dev.sugoio.com:4873/#/
+30 silly mapToRegistry data Result {
+30 silly mapToRegistry   raw: 'response',
+30 silly mapToRegistry   scope: null,
+30 silly mapToRegistry   escapedName: 'response',
+30 silly mapToRegistry   name: 'response',
+30 silly mapToRegistry   rawSpec: '',
+30 silly mapToRegistry   spec: 'latest',
+30 silly mapToRegistry   type: 'tag' }
+31 silly mapToRegistry uri http://dev.sugoio.com:4873/response
+32 verbose publish registryBase http://dev.sugoio.com:4873/#/
+33 silly publish uploading /Users/coinxu/.npm/response/0.0.2/package.tgz
+34 verbose stack Error: auth required for publishing
+34 verbose stack     at CachingRegistryClient.publish (/Users/coinxu/.nvm/versions/node/v6.4.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/publish.js:30:14)
+34 verbose stack     at /Users/coinxu/.nvm/versions/node/v6.4.0/lib/node_modules/npm/lib/publish.js:138:14
+34 verbose stack     at mapToRegistry (/Users/coinxu/.nvm/versions/node/v6.4.0/lib/node_modules/npm/lib/utils/map-to-registry.js:62:3)
+34 verbose stack     at publish_ (/Users/coinxu/.nvm/versions/node/v6.4.0/lib/node_modules/npm/lib/publish.js:107:3)
+34 verbose stack     at Array.<anonymous> (/Users/coinxu/.nvm/versions/node/v6.4.0/lib/node_modules/npm/node_modules/slide/lib/bind-actor.js:15:8)
+34 verbose stack     at LOOP (/Users/coinxu/.nvm/versions/node/v6.4.0/lib/node_modules/npm/node_modules/slide/lib/chain.js:15:14)
+34 verbose stack     at LOOP (/Users/coinxu/.nvm/versions/node/v6.4.0/lib/node_modules/npm/node_modules/slide/lib/chain.js:14:28)
+34 verbose stack     at chain (/Users/coinxu/.nvm/versions/node/v6.4.0/lib/node_modules/npm/node_modules/slide/lib/chain.js:20:5)
+34 verbose stack     at /Users/coinxu/.nvm/versions/node/v6.4.0/lib/node_modules/npm/lib/publish.js:73:5
+34 verbose stack     at RES (/Users/coinxu/.nvm/versions/node/v6.4.0/lib/node_modules/npm/node_modules/inflight/inflight.js:23:14)
+35 verbose cwd /Users/coinxu/github/response
+36 error Darwin 17.2.0
+37 error argv "/Users/coinxu/.nvm/versions/node/v6.4.0/bin/node" "/Users/coinxu/.nvm/versions/node/v6.4.0/bin/npm" "publish"
+38 error node v6.4.0
+39 error npm  v3.10.3
+40 error code ENEEDAUTH
+41 error need auth auth required for publishing
+42 error need auth You need to authorize this machine using `npm adduser`
+43 verbose exit [ 1, true ]
