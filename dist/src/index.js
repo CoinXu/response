@@ -13,3 +13,5 @@ var Response_1 = require("./Response");
 exports.Response = Response_1.Response;
 var structure_1 = require("./structure");
 exports.structure = structure_1["default"];
+var ResponseStructure_1 = require("./ResponseStructure");
+exports.ResponseStructure = ResponseStructure_1.ResponseStructure;

@@ -1,31 +1,32 @@
 "use strict";
 /**
  * Created by asd on 17-8-5.
- * https://www.iana.org/assignments/media-types/media-types.xhtml
+ * https=//www.iana.org/assignments/media-types/media-types.xhtml
  */
 exports.__esModule = true;
-exports.MEDIA_TYPES = {
+var MEDIA_TYPES;
+(function (MEDIA_TYPES) {
     // Application
-    APPLICATION_OCTET_STREAM: 'application/octet-stream',
-    APPLICATION_XML: 'application/xml',
-    APPLICATION_PDF: 'application/pdf',
-    APPLICATION_JSON: 'application/json',
+    MEDIA_TYPES["APPLICATION_OCTET_STREAM"] = "application/octet-stream";
+    MEDIA_TYPES["APPLICATION_XML"] = "application/xml";
+    MEDIA_TYPES["APPLICATION_PDF"] = "application/pdf";
+    MEDIA_TYPES["APPLICATION_JSON"] = "application/json";
     // Image
-    IMAGE_GIF: 'image/git',
-    IMAGE_PNG: 'image/png',
-    IMAGE_JPEG: 'image/jpeg',
-    IMAGE_BMP: 'image/bmp',
-    IMAGE_WEBP: 'image/webp',
+    MEDIA_TYPES["IMAGE_GIF"] = "image/git";
+    MEDIA_TYPES["IMAGE_PNG"] = "image/png";
+    MEDIA_TYPES["IMAGE_JPEG"] = "image/jpeg";
+    MEDIA_TYPES["IMAGE_BMP"] = "image/bmp";
+    MEDIA_TYPES["IMAGE_WEBP"] = "image/webp";
     // Audio
-    AUDIO_MIDI: 'audio/midi',
-    AUDIO_MPEG: 'audio/mpeg',
-    AUDIO_OGG: 'audio/ogg',
-    AUDIO_WAV: 'audio/wav',
+    MEDIA_TYPES["AUDIO_MIDI"] = "audio/midi";
+    MEDIA_TYPES["AUDIO_MPEG"] = "audio/mpeg";
+    MEDIA_TYPES["AUDIO_OGG"] = "audio/ogg";
+    MEDIA_TYPES["AUDIO_WAV"] = "audio/wav";
     // Text
-    TEXT_PLAIN: 'text/plain',
-    TEXT_HTML: 'text/html',
-    TEXT_CSS: 'text/css',
-    TEXT_JAVASCRIPT: 'text/javascript',
-    TEXT_CSV: 'text/csv',
-    TEXT_XML: 'text/xml'
-};
+    MEDIA_TYPES["TEXT_PLAIN"] = "text/plain";
+    MEDIA_TYPES["TEXT_HTML"] = "text/html";
+    MEDIA_TYPES["TEXT_CSS"] = "text/css";
+    MEDIA_TYPES["TEXT_JAVASCRIPT"] = "text/javascript";
+    MEDIA_TYPES["TEXT_CSV"] = "text/csv";
+    MEDIA_TYPES["TEXT_XML"] = "text/xml";
+})(MEDIA_TYPES = exports.MEDIA_TYPES || (exports.MEDIA_TYPES = {}));
