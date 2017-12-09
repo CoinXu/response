@@ -1,10 +1,12 @@
-/**
- * @author coinxu<duanxian0605@gmail.com>
- * @date   09/12/2017
- * @description
- */
-import { Structure } from './structure';
 import { MEDIA_TYPES } from "./media-types";
+import { ResponseStruct } from "./Response";
+export interface Structure<T> {
+    success: boolean;
+    type: string;
+    code: number;
+    body: T;
+    message?: string;
+}
 export declare class ResponseStructure<T> {
     private success;
     private type;
@@ -19,4 +21,5 @@ export declare class ResponseStructure<T> {
     toJson(): Structure<T>;
     static ok<T>(body: T): Structure<T>;
     static fail(message?: string): Structure<string>;
+    static wrapper<T>(struct: ResponseStruct<T>, message?: string): Structure<T>;
 }

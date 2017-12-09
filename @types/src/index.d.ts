@@ -6,6 +6,5 @@
 import { HTTP_RESPONSE_STATUS, Status } from './http-response-status';
 import { MEDIA_TYPES } from './media-types';
 import { Response, ResponseStruct } from './Response';
-import structure from './structure';
 import { ResponseStructure } from './ResponseStructure';
-export { HTTP_RESPONSE_STATUS, MEDIA_TYPES, Response, ResponseStruct, Status, structure, ResponseStructure };
+export { HTTP_RESPONSE_STATUS, MEDIA_TYPES, Response, ResponseStruct, Status, ResponseStructure };

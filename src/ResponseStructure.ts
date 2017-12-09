@@ -4,9 +4,19 @@
  * @description
  */
 
-import structure, { Structure } from './structure'
+import { isSuccess } from './is-success'
 import { Response } from './Response'
 import { MEDIA_TYPES } from "./media-types"
+import { ResponseStruct } from "./Response"
+import { HTTP_RESPONSE_STATUS } from './http-response-status'
+
+export interface Structure<T> {
+  success: boolean
+  type: string
+  code: number
+  body: T
+  message?: string
+}
 
 export class ResponseStructure<T> {
 
@@ -52,10 +62,23 @@ export class ResponseStructure<T> {
   }
 
   static ok<T> (body: T): Structure<T> {
-    return structure(Response.ok(body))
+    return ResponseStructure.wrapper<T>(Response.ok(body))
   }
 
   static fail (message?: string): Structure<string> {
-    return structure(Response.badRequest(message))
+    return ResponseStructure.wrapper<string>(
+      Response.badRequest(HTTP_RESPONSE_STATUS.BAD_REQUEST.body),
+      message
+    )
+  }
+
+  static wrapper<T> (struct: ResponseStruct<T>, message?: string): Structure<T> {
+    return {
+      success: isSuccess(struct.code),
+      type: struct.type,
+      body: struct.body,
+      code: struct.code,
+      message
+    }
   }
 }

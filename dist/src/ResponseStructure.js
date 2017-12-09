@@ -5,8 +5,9 @@
  * @description
  */
 exports.__esModule = true;
-var structure_1 = require("./structure");
+var is_success_1 = require("./is-success");
 var Response_1 = require("./Response");
+var http_response_status_1 = require("./http-response-status");
 var ResponseStructure = (function () {
     function ResponseStructure() {
     }
@@ -40,10 +41,19 @@ var ResponseStructure = (function () {
         };
     };
     ResponseStructure.ok = function (body) {
-        return structure_1["default"](Response_1.Response.ok(body));
+        return ResponseStructure.wrapper(Response_1.Response.ok(body));
     };
     ResponseStructure.fail = function (message) {
-        return structure_1["default"](Response_1.Response.badRequest(message));
+        return ResponseStructure.wrapper(Response_1.Response.badRequest(http_response_status_1.HTTP_RESPONSE_STATUS.BAD_REQUEST.body), message);
+    };
+    ResponseStructure.wrapper = function (struct, message) {
+        return {
+            success: is_success_1.isSuccess(struct.code),
+            type: struct.type,
+            body: struct.body,
+            code: struct.code,
+            message: message
+        };
     };
     return ResponseStructure;
 }());

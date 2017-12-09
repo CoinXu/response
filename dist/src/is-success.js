@@ -1,8 +1,10 @@
+"use strict";
 /**
  * @author coinxu<duanxian0605@gmail.com>
  * @date   09/12/2017
  * @description
  */
+exports.__esModule = true;
 /**
  * 根据传入的http status code 确定返回结果
  * @param {number} code
@@ -27,3 +29,4 @@ function isSuccess(code) {
     }
     return false;
 }
+exports.isSuccess = isSuccess;

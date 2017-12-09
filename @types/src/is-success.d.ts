@@ -8,4 +8,4 @@
  * @param {number} code
  * @return {boolean}
  */
-declare function isSuccess(code: number): boolean;
+export declare function isSuccess(code: number): boolean;

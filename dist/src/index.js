@@ -11,7 +11,5 @@ var media_types_1 = require("./media-types");
 exports.MEDIA_TYPES = media_types_1.MEDIA_TYPES;
 var Response_1 = require("./Response");
 exports.Response = Response_1.Response;
-var structure_1 = require("./structure");
-exports.structure = structure_1["default"];
 var ResponseStructure_1 = require("./ResponseStructure");
 exports.ResponseStructure = ResponseStructure_1.ResponseStructure;
